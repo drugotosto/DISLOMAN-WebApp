@@ -6,17 +6,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/disloman")
 public class HelloController {
 
     @Value("${spring.application.name}")
     String appName;
 
-    @GetMapping
+    @GetMapping(value = "/prove")
     public String home(Model model) {
         model.addAttribute("appName",appName);
-        return "index";
+        return "prove";
     }
 
+    @GetMapping(value = "/home")
+    public String homeDisloman() {
+        return "home";
+    }
 
 }
