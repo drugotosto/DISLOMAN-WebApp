@@ -12,15 +12,22 @@ public class HelloController {
     @Value("${spring.application.name}")
     String appName;
 
-    @GetMapping(value = "/prove")
+    @GetMapping(value = {"", "/", "/home"})
     public String home(Model model) {
         model.addAttribute("appName",appName);
-        return "prove";
-    }
-
-    @GetMapping(value = "/home")
-    public String homeDisloman() {
         return "home";
     }
+
+    @GetMapping(value = "/calendar")
+    public String calendar() {return "calendar"; }
+
+    @GetMapping(value = "/sensorData")
+    public String sensorData() {return "sensorData"; }
+
+    @GetMapping(value = "/profile")
+    public String profile() {return "profile"; }
+
+    @GetMapping(value = "/login")
+    public String login() {return "login"; }
 
 }
