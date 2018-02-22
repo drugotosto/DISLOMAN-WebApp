@@ -1,0 +1,15 @@
+/*#organizationsTable td.details-control {*/
+    /*background-image: url('/images/icons/plus.png');*/
+    /*cursor: pointer;*/
+/*}*/
+
+/*#organizationsTable tr.shown td.details-control {*/
+    /*background-image: url("/images/icons/minus.png");*/
+/*}*/
+
+#DivOrgFormInfo{
+    display: none;
+}
+/*body{*/
+    /*background-color: red;*/
+/*}*/
