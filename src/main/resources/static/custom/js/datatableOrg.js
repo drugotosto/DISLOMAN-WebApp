@@ -1,3 +1,15 @@
+/*
+    Al momento occorre considerare il fatto che le chiamate Ajax della suddetta applicazione client sono alquanto
+    ineffienti poichè  vanno a richiamare direttamente le diverse istanze dei diversi servizi (in locale).
+
+    Il problema principale infatti è la mancancaza lato "back-end" di un SERVICE GATEWAY/REVERSE PROXY (Zuul)
+    che possa fare da singolo punto d'ingresso per quasiasi applicazione client (incluso questa) senza la necessità
+    di dover puntare direttamente ogni singola instanza di servizio come invece viene fatto attualmente.
+    Utilizzando "Zuul" oltre a sfruttare Eureka per eseguire il "service discovery" si eseguirà il routing delle
+    richieste HTTP e utilizzando le Netflix Ribbon libraries verrà implementata una forma di client load-balancing
+    tra le diverse instanze di servizio richiesto.
+ */
+
     $(document).ready( function () {
         // $.ajax({
         //     type: 'GET',
@@ -36,7 +48,7 @@
                 $(json).each(function() {
                     $("#selectOrgId").append($('<option></option>').val(this["organizationId"]).html(this["organizationName"]));
                 });
-                $("#selectOrgId").append('<option value="New Organization" id="optNewOrg">New Organization...</option>');
+                $("#selectOrgId").append('<option value="New Organization" id="optNewOrg">New Companyf...</option>');
             }
         });
 
@@ -83,7 +95,7 @@
                         alert("OrganizeService:"+ response["organizationId"]);
                         data["organizationId"]=response["organizationId"];
 
-                        // Inserisco la nuova licenza associata alla nuova organizzazione precedentemente creata
+                        // Inserisco la nuova licenza associata a   lla nuova organizzazione precedentemente creata
                         $.ajax({
                             type: "POST",
                             url: "http://localhost:8080/v1/organizations/"+response['organizationId']+"/licenses/",
